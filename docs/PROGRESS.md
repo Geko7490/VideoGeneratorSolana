@@ -9,12 +9,12 @@ B7 kabulü tamamlandı: son EXE gerçek yerel LLM → Kokoro → Whisper → MP4
 VEX 0.1, sıfırdan oluşturulmuş çalışan Windows masaüstü geliştirme sürümüdür. PySide6/QML, JSON+SQLite kayıt, scheduler, yerel llama.cpp, prosedürel 2D/motion ve Blender 3D, İngilizce Kokoro/Whisper ve FFmpeg export uygulanmıştır. Tam şartnamenin tüm gelişmiş özellikleri bitmedi.
 
 - Repo: https://github.com/Geko7490/VideoGeneratorSolana
-- Başlangıçta origin boştu; bu oturumdaki kaynaklar yerelde oluşturuldu. İlk kaynak aktarımı hazırlanıyor; release yok.
+- Başlangıçta origin boştu; bu oturumdaki kaynaklar yerelde oluşturuldu. Kaynaklar main dalına gönderildi; ilk kod commit 14023a5cfc72fe694b7f368c67dee05a0392fdbf. Release yok.
 - 26 otomatik test geçiyor; ruff ve compileall başarılı.
 - Gerçek CPU ve Vulkan GGUF inference, WAV, İngilizce kelime hizalama, 720p H.264/AAC/altyazı MP4 ve Blender 3D çıktısı doğrulandı.
 - PyInstaller onedir build, EXE UI ekran görüntüsü ve paket içinden gerçek sesli MP4 export kontrolü başarılı.
 - Varsayılan Qwen2.5 1.5B ile farklı narration içeren üç sahnelik 13.125 saniye 720p video üretildi; Whisper metin uyumu %100. Görsel kalite temel primitive düzeyindedir; kadraj recovery'si UI ve JSON'da uyarılır.
-- Installer compiler kurulumu otomatik onay denetimiyle engellendi. Installer derlenmedi; tanımı ve CI adımı hazır.
+- Yerel installer compiler kurulumu otomatik onay denetimiyle engellendi; installer GitHub Actions Windows runner üzerinde başarıyla derlendi. Tüm CI adımları ve artifact upload geçti.
 - Ayrıntılı kanıt: TEST_RESULTS.md. Mimari ve gerçek destek sınırları: ARCHITECTURE.md.
 
 ## Tamamlanan küçük aşamalar
@@ -48,9 +48,9 @@ Her satır ayrı bir çalışma birimidir. Başlamadan kapsamı kaydet; kodu ve 
 | D2 | Bekliyor | Cycles CPU/GPU seçim ve CPU fallback; runtime olmayan cihazda açıklayıcı akış ve gerçek CPU testi. |
 | J1 | Bekliyor | Gerçek pause; pipeline checkpoint'lerinden süreç yeniden açıldıktan sonra görev düzeyinde resume. Sahne cache'inden yeniden başlatma şu an çalışıyor. |
 | P1 | Bekliyor | Dikey/kare otomatik kadrajlama; tüm çözünürlük/FPS profilleri ve uzun işlerde bellek ölçümü. |
-| R1 | Engelli | Inno Setup compiler erişimi sağlanırsa installer derle ve kur/kaldır testlerini yap. Otomatik onay kurulumu reddetti. |
+| R1 | Kısmen | Installer CI üzerinde başarıyla derlendi ve artifact yüklendi. Kur/kaldır testleri henüz yapılmadı; temiz Windows ortamında kontrol et. |
 | R2 | Bekliyor | Windows 10 ve Python bulunmayan temiz Windows makinede UI/LLM/ses/render/EXE kabulü. |
-| R3 | Bekliyor | Üçüncü taraf lisans/source dağıtım denetimi, release imzası ve gerçek GitHub Actions artifact doğrulaması. Workflow henüz uzak depoda çalışmadı. |
+| R3 | Kısmen | GitHub Actions ve artifact doğrulandı. Üçüncü taraf lisans/source dağıtım denetimi ve release imzası hâlâ bekliyor. |
 
 ## Oturum günlüğü
 
@@ -83,3 +83,14 @@ Gerçek Qwen2.5 1.5B Vulkan inference, farklı İngilizce narration içeren üç
 Son EXE tam LLM zinciri ilk denemede timeout verdi. Proxy/TLS handler hazırlığı olmayan doğrudan HTTPConnection eklendi; loopback/proxy/503 regresyon testi ile toplam 26 test geçti. Yeniden derlenen EXE gerçek 1.5B Vulkan, Kokoro ve Whisper kullanarak 31.94 saniyede 492678 byte MP4 üretti; decode başarılı, metin uyumu %98.68. Orphan test alt süreci sahipliği doğrulanıp sonlandırıldı; yeniden kullanılabilir verify_frozen.py eklendi.
 
 Teslimat: outputs/VEXVideo-Windows-x64.zip (model/Blender ağırlıkları hariç tam onedir), outputs/VEXVideo-source.zip (sanal ortam/model/cache/build hariç kaynak), outputs/VEX-robot-demo.mp4 ve .srt; bu makine için outputs/Start-VEX.cmd. Arşiv CRC ve içerik kontrolleri teslimat aşamasında çalıştırılır. Installer hâlâ derlenmedi; R1 engeli değişmedi. Sonraki geliştirme Q2 ve UI1'dir.
+
+### 2026-11-05 — GitHub aktarımı ve başarılı Windows CI
+
+Kaynaklar, modeller/ayarlar/cache/build hariç main dalına gönderildi. İlk kod commit'i 14023a5cfc72fe694b7f368c67dee05a0392fdbf. GitHub Actions run 41917522197 tamamen başarılı: static checks, tests, QML smoke, onedir EXE, EXE smoke, Inno Setup installer ve artifact upload. Yerel compiler kurulumu engeli, izole GitHub Windows runner üzerindeki build ile giderildi; yerel kurulum tekrar denenmedi. Artifact ID 13364934440, SHA256 7ea67caeabc3310bde5b04d59aed3c20540db685c3c0c24d7db6e5aa62368fbd. Installer kur/kaldır doğrulaması ve Windows 10 kabulü hâlâ bekliyor.
+
+CI: https://github.com/Geko7490/VideoGeneratorSolana/actions/runs/41917522197
+Artifact: https://github.com/Geko7490/VideoGeneratorSolana/actions/runs/41917522197/artifacts/13364934440
+
+### 2026-11-05 — teslimat doğrulandı
+
+Yerel portable ve kaynak ZIP'lerinin CRC/içerik kontrolleri geçti; ağırlık/cache/sanal ortamların kaynak ZIP'ine girmediği doğrulandı. GitHub artifact indirildi ve tam ZIP SHA256 değeri GitHub digest'iyle eşleşti. Installer outputs/VEXVideo-0.1.0-Setup.exe olarak çıkarıldı; PE başlığı ve SHA256 kaydedildi (docs/ci-artifact.json). Installer çalıştırılmadı. KULLANIM.md ve bu bilgisayar için Start-VEX.cmd hazır. Kullanıcıya teslim edilen sürüm v0.1'dir; Q2/UI1 ve kur/kaldır/Windows 10 kontrolleri sonraki işlerdir.

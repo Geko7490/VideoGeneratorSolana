@@ -44,4 +44,4 @@ PENDING, RUNNING, COMPLETED, FAILED, CANCELLED ve başlangıçta kesilmiş işle
 
 ## Dağıtım
 
-PyInstaller onedir paket, Python ve Qt runtime'ını içerir. GGUF, Kokoro/Whisper model ağırlıkları ve Blender ayrı tutulur. FFmpeg, imageio-ffmpeg Windows wheel'inden gelir. Installer için Inno Setup tanımı vardır; mevcut oturumda compiler kurulumu otomatik onay denetimiyle engellendiği için installer build yapılmadı. GitHub Actions workflow yerelde hazırlanmıştır; uzak depoda henüz çalıştırılmadı.
+PyInstaller onedir paket, Python ve Qt runtime'ını içerir. GGUF, Kokoro/Whisper model ağırlıkları ve Blender ayrı tutulur. FFmpeg, imageio-ffmpeg Windows wheel'inden gelir. Installer için Inno Setup tanımı vardır. Yerel compiler kurulumu otomatik onay denetimiyle engellendi; GitHub Actions Windows runner üzerinden installer başarıyla derlendi. Test, EXE smoke, installer build ve artifact upload geçti. Kur/kaldır testi ve release imzası henüz yoktur.

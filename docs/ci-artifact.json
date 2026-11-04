@@ -1,0 +1,10 @@
+{
+  "run_url": "https://github.com/Geko7490/VideoGeneratorSolana/actions/runs/41917522197",
+  "status": "success",
+  "artifact_id": 13364934440,
+  "artifact_sha256": "7ea67caeabc3310bde5b04d59aed3c20540db685c3c0c24d7db6e5aa62368fbd",
+  "installer": "VEXVideo-0.1.0-Setup.exe",
+  "installer_bytes": 141645691,
+  "installer_sha256": "6a7920f92d1ed89a06b01c5f90c4a6d8410c2300d3fe1f358cfc72c9bee4ee8a",
+  "installer_execution_tested": false
+}

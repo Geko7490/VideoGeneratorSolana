@@ -4,7 +4,7 @@ Windows için yerel hikâye planlama ve prosedürel video üretim stüdyosu. Gö
 
 ## Çalıştırma
 
-Hazır paket `dist/VEXVideo/VEXVideo.exe` dosyasındadır. `dist/VEXVideo` klasörünü bütün olarak koruyun; EXE tek başına taşınmaz. Çıktılar klasöründeki `Start-VEX.cmd`, bu makine için hazırlanmış model yollarıyla uygulamayı başlatır.
+Bu çalışma alanında hazır paket `dist/VEXVideo/VEXVideo.exe` dosyasındadır. GitHub üzerinden [başarılı Windows koşusunun artifact'ini](https://github.com/Geko7490/VideoGeneratorSolana/actions/runs/41917522197/artifacts/13364934440) indirebilirsiniz; onedir ve installer içerir. `dist/VEXVideo` klasörünü bütün olarak koruyun; EXE tek başına taşınmaz. Çıktılar klasöründeki `Start-VEX.cmd`, bu makine için hazırlanmış model yollarıyla uygulamayı başlatır.
 
 Bağımsız çalıştırmada varsayılan veri dizini `%LOCALAPPDATA%/VEXVideo` olur. Ayarlar ekranında **Temel modelleri indir** ile ilk kurulum dosyalarını indirebilirsiniz (~1.6 GB; ilk indirmede internet gerekir). Varsayılan Qwen2.5 1.5B modeldir. Denenen 0.5B modelin anlatım/görsel plan kalitesi zayıf olduğundan varsayılan yapılmadı. Daha güçlü yerel GGUF seçilebilir. Blender ayrıca seçilir ve bu indirmeye dahil değildir.
 
@@ -61,7 +61,7 @@ Bu ilk çalışan geliştirme sürümüdür. Yerel CPU ve Vulkan LLM, Kokoro WAV
 
 Şartnamenin gelişmiş tüm özellikleri tamamlanmış değildir: ayrıntılı 3D mesh/skin rig, Cycles CPU render fallback, görsel timeline/scene editörü, karaoke/stil editörü, çok kanallı ses/SFX arayüzü, gerçek pause ve süreç yeniden başlatma sonrası görev düzeyinde resume, otomatik kadrajlama, eksiksiz lisans dağıtım denetimi ve Windows 10 doğrulaması kalmıştır. Kokoro/Whisper aktif inference çağrısı iptal isteğine çağrı sonunda yanıt verir. Altyazı uyum kontrolü gerçek forced alignment yerine geçmez.
 
-Installer tanımı `scripts/installer.iss` içindedir. Bu oturumda Inno Setup compiler kurulumu otomatik onay denetimiyle engellendi; installer henüz derlenmedi. GitHub Actions workflow hazırdır; uzak depoda çalıştırılmadı. GitHub'a push/release yapılmadı.
+Installer tanımı `scripts/installer.iss` içindedir. Yerel compiler kurulumu otomatik onay denetimiyle engellendi; installer GitHub Actions Windows ortamında başarıyla derlendi. Test, EXE build, smoke, installer ve artifact adımları geçti: https://github.com/Geko7490/VideoGeneratorSolana/actions/runs/41917522197. Kaynaklar main dalına gönderildi; release yayımlanmadı. Installer kur/kaldır ve Windows 10 testleri henüz yapılmadı.
 
 - [Çalışma kuralları](AGENTS.md)
 - [Güncel durum ve küçük görev planı](docs/PROGRESS.md)

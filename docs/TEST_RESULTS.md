@@ -40,8 +40,8 @@ Kontroller gerçek çıktıları kapsar:
 | Paket EXE QML smoke | Başarılı | Pencere açıldı, örnek yüklendi, ekran görüntüsü kaydedildi; çıkış kodu 0. |
 | Paket EXE gerçek sesli export | Başarılı | Paketlenmiş Kokoro/Whisper ile MP4 üretildi; çıkış kodu 0, çıktı 671278 byte. |
 | Daha büyük 1.5B model kalite kontrolü | Başarılı, ilk sürüm kalitesi | 1d4e634a-3e08-41c4-b001-ba1182b05694: farklı narration içeren 3 sahne, 13.125 sn, 1280x720/24 FPS, H.264/AAC/English mov_text, metin uyumu %100. Kadraj/çakışma recovery uyarıları kaydedildi; video karesi incelendi. |
-| Installer | Yapılmadı | Compiler kurulumu otomatik onay denetimi tarafından engellendi. |
-| GitHub Actions | Çalıştırılmadı | Workflow dosyası hazır; uzak depoya push yapılmadı. |
+| Installer | CI build başarılı | Yerel compiler kurulumu engellendi; izole GitHub Windows runner üzerinde Inno Setup ile derlendi. Kur/kaldır henüz test edilmedi. |
+| GitHub Actions | Başarılı | Run 41917522197: bütün adımlar ve artifact upload geçti. |
 
 ## Bulunan ve düzeltilen sorunlar
 
@@ -63,3 +63,7 @@ Kontroller gerçek çıktıları kapsar:
 `python scripts/verify_frozen.py` başarılı: son EXE, gerçek yerel 1.5B Vulkan LLM → Kokoro → Whisper → FFmpeg zincirini 31.94 saniyede tamamladı. Çıkış kodu 0; yeni MP4 492678 byte, decode kontrolü başarılı, kaynak metin uyumu %98.684. Makinece okunabilir kanıt: `frozen-acceptance.json`.
 
 Bu kontrol sırasında bulunan loopback timeout'u, HTTPS/proxy handler hazırlığı gerektirmeyen doğrudan `HTTPConnection` ile giderildi. Yalnızca loopback portuna bağlanma, proxy'den bağımsız kalma ve model yüklenirken 503 cevabını işleme regresyon testi eklendi.
+
+## GitHub Windows CI — 2026-11-05
+
+İlk kaynak commit 14023a5cfc72fe694b7f368c67dee05a0392fdbf için workflow başarıyla tamamlandı. Artifact VEXVideo-Windows-x64, ID 13364934440; onedir ve installer içerir. Bu sonuç installer'ın kur/kaldır işleminin veya Windows 10'un test edildiği anlamına gelmez.
