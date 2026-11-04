@@ -1,0 +1,334 @@
+{
+  "schema_version": 1,
+  "id": "1d4e634a-3e08-41c4-b001-ba1182b05694",
+  "title": "The Last Signal",
+  "story": "A small robot wakes up in an abandoned city. It looks around, walks toward a glowing tower, and discovers a mysterious message.",
+  "export": {
+    "resolution": 720,
+    "fps": 24,
+    "aspect": "16:9",
+    "burn_subtitles": false
+  },
+  "scenes": [
+    {
+      "id": "scene1",
+      "title": "Awakening",
+      "duration": 4.367333333333334,
+      "engine": "2d",
+      "narration": "The robot wakes up from its slumber, its eyes wide with curiosity.",
+      "background": "#111526",
+      "camera": {
+        "x": 0.0,
+        "y": 0.0,
+        "zoom": 1.0,
+        "pan_x": 12.0,
+        "pan_y": 0.0
+      },
+      "nodes": [
+        {
+          "id": "object0",
+          "kind": "robot",
+          "parent": null,
+          "x": 300.0,
+          "y": 500.0,
+          "width": 100.0,
+          "height": 160.0,
+          "rotation": 0.0,
+          "scale": 1.0,
+          "opacity": 1.0,
+          "color": "#FF0000",
+          "stroke": "#e9e5ff",
+          "stroke_width": 0.0,
+          "text": "Robot",
+          "text_effect": "none",
+          "text_rate": 16.0,
+          "gradient": null,
+          "clip": false,
+          "particle_count": 40,
+          "points": [],
+          "layer": 2,
+          "tracks": [
+            {
+              "property": "x",
+              "keys": [
+                {
+                  "time": 0.0,
+                  "value": 300.0,
+                  "easing": "smooth"
+                },
+                {
+                  "time": 4.0,
+                  "value": 700.0,
+                  "easing": "smooth"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "object1",
+          "kind": "building",
+          "parent": null,
+          "x": 370.0,
+          "y": 400.0,
+          "width": 100.0,
+          "height": 300.0,
+          "rotation": 0.0,
+          "scale": 1.0,
+          "opacity": 1.0,
+          "color": "#00FF00",
+          "stroke": "#e9e5ff",
+          "stroke_width": 0.0,
+          "text": "Building",
+          "text_effect": "none",
+          "text_rate": 16.0,
+          "gradient": null,
+          "clip": false,
+          "particle_count": 40,
+          "points": [],
+          "layer": 1,
+          "tracks": []
+        },
+        {
+          "id": "object2",
+          "kind": "tower",
+          "parent": null,
+          "x": 1000.0,
+          "y": 350.0,
+          "width": 100.0,
+          "height": 400.0,
+          "rotation": 0.0,
+          "scale": 1.0,
+          "opacity": 1.0,
+          "color": "#0000FF",
+          "stroke": "#e9e5ff",
+          "stroke_width": 0.0,
+          "text": "Tower",
+          "text_effect": "none",
+          "text_rate": 16.0,
+          "gradient": null,
+          "clip": false,
+          "particle_count": 40,
+          "points": [],
+          "layer": 1,
+          "tracks": []
+        }
+      ]
+    },
+    {
+      "id": "scene2",
+      "title": "Approaching the Tower",
+      "duration": 4.1113333333333335,
+      "engine": "2d",
+      "narration": "The robot walks towards the tower, its movements slow and cautious.",
+      "background": "#111526",
+      "camera": {
+        "x": 0.0,
+        "y": 0.0,
+        "zoom": 1.0,
+        "pan_x": 12.0,
+        "pan_y": 0.0
+      },
+      "nodes": [
+        {
+          "id": "object0",
+          "kind": "robot",
+          "parent": null,
+          "x": 300.0,
+          "y": 500.0,
+          "width": 100.0,
+          "height": 160.0,
+          "rotation": 0.0,
+          "scale": 1.0,
+          "opacity": 1.0,
+          "color": "#FF0000",
+          "stroke": "#e9e5ff",
+          "stroke_width": 0.0,
+          "text": "Robot",
+          "text_effect": "none",
+          "text_rate": 16.0,
+          "gradient": null,
+          "clip": false,
+          "particle_count": 40,
+          "points": [],
+          "layer": 2,
+          "tracks": [
+            {
+              "property": "x",
+              "keys": [
+                {
+                  "time": 0.0,
+                  "value": 300.0,
+                  "easing": "smooth"
+                },
+                {
+                  "time": 4.0,
+                  "value": 700.0,
+                  "easing": "smooth"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "object1",
+          "kind": "building",
+          "parent": null,
+          "x": 370.0,
+          "y": 400.0,
+          "width": 100.0,
+          "height": 300.0,
+          "rotation": 0.0,
+          "scale": 1.0,
+          "opacity": 1.0,
+          "color": "#00FF00",
+          "stroke": "#e9e5ff",
+          "stroke_width": 0.0,
+          "text": "Building",
+          "text_effect": "none",
+          "text_rate": 16.0,
+          "gradient": null,
+          "clip": false,
+          "particle_count": 40,
+          "points": [],
+          "layer": 1,
+          "tracks": []
+        },
+        {
+          "id": "object2",
+          "kind": "tower",
+          "parent": null,
+          "x": 1000.0,
+          "y": 350.0,
+          "width": 100.0,
+          "height": 400.0,
+          "rotation": 0.0,
+          "scale": 1.0,
+          "opacity": 1.0,
+          "color": "#0000FF",
+          "stroke": "#e9e5ff",
+          "stroke_width": 0.0,
+          "text": "Tower",
+          "text_effect": "none",
+          "text_rate": 16.0,
+          "gradient": null,
+          "clip": false,
+          "particle_count": 40,
+          "points": [],
+          "layer": 1,
+          "tracks": []
+        }
+      ]
+    },
+    {
+      "id": "scene3",
+      "title": "Discovering the Message",
+      "duration": 4.623333333333333,
+      "engine": "2d",
+      "narration": "The robot stops in front of the tower, its curiosity piqued by the message.",
+      "background": "#111526",
+      "camera": {
+        "x": 0.0,
+        "y": 0.0,
+        "zoom": 1.0,
+        "pan_x": 12.0,
+        "pan_y": 0.0
+      },
+      "nodes": [
+        {
+          "id": "object0",
+          "kind": "robot",
+          "parent": null,
+          "x": 300.0,
+          "y": 500.0,
+          "width": 100.0,
+          "height": 160.0,
+          "rotation": 0.0,
+          "scale": 1.0,
+          "opacity": 1.0,
+          "color": "#FF0000",
+          "stroke": "#e9e5ff",
+          "stroke_width": 0.0,
+          "text": "Robot",
+          "text_effect": "none",
+          "text_rate": 16.0,
+          "gradient": null,
+          "clip": false,
+          "particle_count": 40,
+          "points": [],
+          "layer": 2,
+          "tracks": [
+            {
+              "property": "x",
+              "keys": [
+                {
+                  "time": 0.0,
+                  "value": 300.0,
+                  "easing": "smooth"
+                },
+                {
+                  "time": 4.0,
+                  "value": 700.0,
+                  "easing": "smooth"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "object1",
+          "kind": "building",
+          "parent": null,
+          "x": 370.0,
+          "y": 400.0,
+          "width": 100.0,
+          "height": 300.0,
+          "rotation": 0.0,
+          "scale": 1.0,
+          "opacity": 1.0,
+          "color": "#00FF00",
+          "stroke": "#e9e5ff",
+          "stroke_width": 0.0,
+          "text": "Building",
+          "text_effect": "none",
+          "text_rate": 16.0,
+          "gradient": null,
+          "clip": false,
+          "particle_count": 40,
+          "points": [],
+          "layer": 1,
+          "tracks": []
+        },
+        {
+          "id": "object2",
+          "kind": "tower",
+          "parent": null,
+          "x": 1000.0,
+          "y": 350.0,
+          "width": 100.0,
+          "height": 400.0,
+          "rotation": 0.0,
+          "scale": 1.0,
+          "opacity": 1.0,
+          "color": "#0000FF",
+          "stroke": "#e9e5ff",
+          "stroke_width": 0.0,
+          "text": "Tower",
+          "text_effect": "none",
+          "text_rate": 16.0,
+          "gradient": null,
+          "clip": false,
+          "particle_count": 40,
+          "points": [],
+          "layer": 1,
+          "tracks": []
+        }
+      ]
+    }
+  ],
+  "planning_warnings": [
+    "Awakening: model yerleşimi kadraj dışında/üst üste; güvenli prosedürel yerleşim uygulandı.",
+    "Approaching the Tower: model yerleşimi kadraj dışında/üst üste; güvenli prosedürel yerleşim uygulandı.",
+    "Discovering the Message: model yerleşimi kadraj dışında/üst üste; güvenli prosedürel yerleşim uygulandı."
+  ]
+}

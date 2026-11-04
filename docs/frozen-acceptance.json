@@ -1,0 +1,8 @@
+{
+  "exit_code": 0,
+  "seconds": 31.94,
+  "output_bytes": 492678,
+  "alignment": 0.9868421052631579,
+  "uses_real_llm_tts_whisper": true,
+  "output": "data\\frozen-tests\\24c519e5a1df4cff8ecf8be3b4aff7b1\\projects\\e15d62fd-0401-470d-8901-42c22e9f5111\\exports\\preview.mp4"
+}

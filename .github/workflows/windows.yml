@@ -1,0 +1,32 @@
+name: Windows checks and package
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m venv .venv
+      - run: .\.venv\Scripts\python.exe -m pip install -e ".[dev,audio]"
+      - run: .\.venv\Scripts\python.exe -m ruff check .
+      - run: .\.venv\Scripts\python.exe -m pytest -q
+      - run: .\.venv\Scripts\python.exe -m vex --smoke-test --data-dir build/ui-smoke --screenshot build/studio.png
+      - run: ./scripts/build.ps1
+        shell: pwsh
+      - name: Build installer
+        shell: pwsh
+        run: |
+          choco install innosetup --yes --no-progress
+          if ($LASTEXITCODE -ne 0) { throw 'Inno Setup installation failed' }
+          $compiler = Get-ChildItem 'C:\Program Files (x86)\Inno Setup*\ISCC.exe','C:\Program Files\Inno Setup*\ISCC.exe' -ErrorAction SilentlyContinue | Select-Object -First 1
+          if (-not $compiler) { throw 'ISCC compiler not found' }
+          & $compiler.FullName scripts/installer.iss
+          if ($LASTEXITCODE -ne 0) { throw 'Installer build failed' }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: VEXVideo-Windows-x64
+          path: |
+            dist/VEXVideo/
+            dist/installer/

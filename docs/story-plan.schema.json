@@ -1,0 +1,134 @@
+{
+  "$defs": {
+    "PlannedObject": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "pattern": "^(robot|building|tower|rectangle|ellipse|text)$",
+          "title": "Kind",
+          "type": "string"
+        },
+        "x": {
+          "description": "Center x in the 1280x720 canvas",
+          "maximum": 1280,
+          "minimum": 0,
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "description": "Center y in the 1280x720 canvas",
+          "maximum": 720,
+          "minimum": 0,
+          "title": "Y",
+          "type": "number"
+        },
+        "width": {
+          "maximum": 1280,
+          "minimum": 5,
+          "title": "Width",
+          "type": "number"
+        },
+        "height": {
+          "maximum": 720,
+          "minimum": 5,
+          "title": "Height",
+          "type": "number"
+        },
+        "color": {
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "title": "Color",
+          "type": "string"
+        },
+        "end_x": {
+          "description": "End x; different from x for walking robots",
+          "maximum": 1280,
+          "minimum": 0,
+          "title": "End X",
+          "type": "number"
+        },
+        "text": {
+          "description": "Text to draw for text nodes; empty otherwise",
+          "maxLength": 200,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "x",
+        "y",
+        "width",
+        "height",
+        "color",
+        "end_x",
+        "text"
+      ],
+      "title": "PlannedObject",
+      "type": "object"
+    },
+    "PlannedShot": {
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "narration": {
+          "description": "One or two English sentences spoken by the narrator",
+          "maxLength": 500,
+          "minLength": 10,
+          "title": "Narration",
+          "type": "string"
+        },
+        "duration": {
+          "description": "Scene duration in seconds, typically 6",
+          "enum": [
+            4,
+            6,
+            8,
+            10,
+            12
+          ],
+          "title": "Duration",
+          "type": "integer"
+        },
+        "objects": {
+          "items": {
+            "$ref": "#/$defs/PlannedObject"
+          },
+          "maxItems": 12,
+          "minItems": 2,
+          "title": "Objects",
+          "type": "array"
+        }
+      },
+      "required": [
+        "title",
+        "narration",
+        "duration",
+        "objects"
+      ],
+      "title": "PlannedShot",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "scenes": {
+      "items": {
+        "$ref": "#/$defs/PlannedShot"
+      },
+      "maxItems": 4,
+      "minItems": 2,
+      "title": "Scenes",
+      "type": "array"
+    }
+  },
+  "required": [
+    "scenes"
+  ],
+  "title": "StoryPlan",
+  "type": "object"
+}

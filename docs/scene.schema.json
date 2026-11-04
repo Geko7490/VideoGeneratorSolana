@@ -1,0 +1,459 @@
+{
+  "$defs": {
+    "Camera": {
+      "additionalProperties": false,
+      "properties": {
+        "x": {
+          "default": 0,
+          "maximum": 100000,
+          "minimum": -100000,
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "default": 0,
+          "maximum": 100000,
+          "minimum": -100000,
+          "title": "Y",
+          "type": "number"
+        },
+        "zoom": {
+          "default": 1,
+          "maximum": 20,
+          "minimum": 0.01,
+          "title": "Zoom",
+          "type": "number"
+        },
+        "pan_x": {
+          "default": 0,
+          "maximum": 100000,
+          "minimum": -100000,
+          "title": "Pan X",
+          "type": "number"
+        },
+        "pan_y": {
+          "default": 0,
+          "maximum": 100000,
+          "minimum": -100000,
+          "title": "Pan Y",
+          "type": "number"
+        }
+      },
+      "title": "Camera",
+      "type": "object"
+    },
+    "ExportSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "resolution": {
+          "default": 720,
+          "enum": [
+            480,
+            720,
+            1080,
+            1440,
+            2160
+          ],
+          "title": "Resolution",
+          "type": "integer"
+        },
+        "fps": {
+          "default": 24,
+          "enum": [
+            24,
+            30,
+            60
+          ],
+          "title": "Fps",
+          "type": "integer"
+        },
+        "aspect": {
+          "default": "16:9",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1"
+          ],
+          "title": "Aspect",
+          "type": "string"
+        },
+        "burn_subtitles": {
+          "default": false,
+          "title": "Burn Subtitles",
+          "type": "boolean"
+        }
+      },
+      "title": "ExportSettings",
+      "type": "object"
+    },
+    "Keyframe": {
+      "additionalProperties": false,
+      "properties": {
+        "time": {
+          "maximum": 3600,
+          "minimum": 0,
+          "title": "Time",
+          "type": "number"
+        },
+        "value": {
+          "maximum": 100000,
+          "minimum": -100000,
+          "title": "Value",
+          "type": "number"
+        },
+        "easing": {
+          "default": "smooth",
+          "enum": [
+            "linear",
+            "smooth",
+            "in",
+            "out"
+          ],
+          "title": "Easing",
+          "type": "string"
+        }
+      },
+      "required": [
+        "time",
+        "value"
+      ],
+      "title": "Keyframe",
+      "type": "object"
+    },
+    "Node": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "rectangle",
+            "ellipse",
+            "line",
+            "polygon",
+            "path",
+            "text",
+            "particles",
+            "robot",
+            "building",
+            "tower",
+            "group"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "parent": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parent"
+        },
+        "x": {
+          "default": 0,
+          "maximum": 100000,
+          "minimum": -100000,
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "default": 0,
+          "maximum": 100000,
+          "minimum": -100000,
+          "title": "Y",
+          "type": "number"
+        },
+        "width": {
+          "default": 100,
+          "exclusiveMinimum": 0,
+          "maximum": 10000,
+          "title": "Width",
+          "type": "number"
+        },
+        "height": {
+          "default": 100,
+          "exclusiveMinimum": 0,
+          "maximum": 10000,
+          "title": "Height",
+          "type": "number"
+        },
+        "rotation": {
+          "default": 0,
+          "maximum": 100000,
+          "minimum": -100000,
+          "title": "Rotation",
+          "type": "number"
+        },
+        "scale": {
+          "default": 1,
+          "maximum": 100,
+          "minimum": 0.001,
+          "title": "Scale",
+          "type": "number"
+        },
+        "opacity": {
+          "default": 1,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Opacity",
+          "type": "number"
+        },
+        "color": {
+          "default": "#a78bfa",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "title": "Color",
+          "type": "string"
+        },
+        "stroke": {
+          "default": "#e9e5ff",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "title": "Stroke",
+          "type": "string"
+        },
+        "stroke_width": {
+          "default": 0,
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Stroke Width",
+          "type": "number"
+        },
+        "text": {
+          "default": "",
+          "maxLength": 2000,
+          "title": "Text",
+          "type": "string"
+        },
+        "text_effect": {
+          "default": "none",
+          "enum": [
+            "none",
+            "typewriter",
+            "reveal"
+          ],
+          "title": "Text Effect",
+          "type": "string"
+        },
+        "text_rate": {
+          "default": 16,
+          "exclusiveMinimum": 0,
+          "maximum": 200,
+          "title": "Text Rate",
+          "type": "number"
+        },
+        "gradient": {
+          "anyOf": [
+            {
+              "pattern": "^#[0-9a-fA-F]{6}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gradient"
+        },
+        "clip": {
+          "default": false,
+          "title": "Clip",
+          "type": "boolean"
+        },
+        "particle_count": {
+          "default": 40,
+          "maximum": 500,
+          "minimum": 1,
+          "title": "Particle Count",
+          "type": "integer"
+        },
+        "points": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "maxItems": 256,
+          "title": "Points",
+          "type": "array"
+        },
+        "layer": {
+          "default": 0,
+          "maximum": 1000,
+          "minimum": -1000,
+          "title": "Layer",
+          "type": "integer"
+        },
+        "tracks": {
+          "items": {
+            "$ref": "#/$defs/Track"
+          },
+          "maxItems": 5,
+          "title": "Tracks",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "kind"
+      ],
+      "title": "Node",
+      "type": "object"
+    },
+    "Scene": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "duration": {
+          "default": 5,
+          "maximum": 600,
+          "minimum": 0.1,
+          "title": "Duration",
+          "type": "number"
+        },
+        "engine": {
+          "default": "2d",
+          "enum": [
+            "2d",
+            "motion",
+            "3d"
+          ],
+          "title": "Engine",
+          "type": "string"
+        },
+        "narration": {
+          "default": "",
+          "maxLength": 5000,
+          "title": "Narration",
+          "type": "string"
+        },
+        "background": {
+          "default": "#111526",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "title": "Background",
+          "type": "string"
+        },
+        "camera": {
+          "$ref": "#/$defs/Camera"
+        },
+        "nodes": {
+          "items": {
+            "$ref": "#/$defs/Node"
+          },
+          "maxItems": 500,
+          "title": "Nodes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "title"
+      ],
+      "title": "Scene",
+      "type": "object"
+    },
+    "Track": {
+      "additionalProperties": false,
+      "properties": {
+        "property": {
+          "enum": [
+            "x",
+            "y",
+            "rotation",
+            "scale",
+            "opacity"
+          ],
+          "title": "Property",
+          "type": "string"
+        },
+        "keys": {
+          "items": {
+            "$ref": "#/$defs/Keyframe"
+          },
+          "maxItems": 500,
+          "minItems": 1,
+          "title": "Keys",
+          "type": "array"
+        }
+      },
+      "required": [
+        "property",
+        "keys"
+      ],
+      "title": "Track",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "id": {
+      "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+      "title": "Id",
+      "type": "string"
+    },
+    "title": {
+      "default": "Untitled story",
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "story": {
+      "default": "",
+      "maxLength": 20000,
+      "title": "Story",
+      "type": "string"
+    },
+    "export": {
+      "$ref": "#/$defs/ExportSettings"
+    },
+    "scenes": {
+      "items": {
+        "$ref": "#/$defs/Scene"
+      },
+      "maxItems": 100,
+      "title": "Scenes",
+      "type": "array"
+    },
+    "planning_warnings": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 100,
+      "title": "Planning Warnings",
+      "type": "array"
+    }
+  },
+  "title": "Project",
+  "type": "object"
+}
